@@ -39,6 +39,14 @@ schedule:
     requests:
       cpu: 10m
       memory: 32Mi
+  # -- Number of successful Jobs to keep
+  successfulJobsHistoryLimit: 1
+  # -- Number of failed Jobs to keep
+  failedJobsHistoryLimit: 1
+  # -- Concurrency policy https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#concurrency-policy
+  concurrencyPolicy: Replace
+  # -- Set to true to suspend the CronJob
+  suspend: false
 
 # -- Service Account, ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 serviceAccount:

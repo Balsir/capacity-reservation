@@ -5,6 +5,10 @@ metadata:
   name: {{ include "capacity-reservation.fullname" . }}-up
 spec:
   schedule: {{ .Values.schedule.up.cron | quote }}
+  successfulJobsHistoryLimit: {{ .Values.schedule.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .Values.schedule.failedJobsHistoryLimit }}
+  concurrencyPolicy: {{ .Values.schedule.concurrencyPolicy }}
+  suspend: {{ .Values.schedule.suspend }}
   jobTemplate:
     spec:
       template:
