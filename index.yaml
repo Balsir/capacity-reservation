@@ -3,6 +3,16 @@ entries:
   capacity-reservation:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2024-03-06T03:19:12.950105837Z"
+    description: Helm chart for capacity reservation
+    digest: d6d51db8bd27ee6d763149aff75e1a4aeb8eb198532f726793a1b15da3004443
+    name: capacity-reservation
+    type: application
+    urls:
+    - https://github.com/Balsir/capacity-reservation/releases/download/capacity-reservation-0.1.5/capacity-reservation-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2024-03-06T03:00:10.30675017Z"
     description: Helm chart for capacity reservation
     digest: da2208ebdeda65f39ee8d46c44c1fcbdfc77b94d19fcd719eeb0b358dc7488fa
@@ -51,4 +61,4 @@ entries:
     urls:
     - https://github.com/Balsir/capacity-reservation/releases/download/capacity-reservation-0.1.0/capacity-reservation-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-06T03:00:10.306790267Z"
+generated: "2024-03-06T03:19:12.950132938Z"
