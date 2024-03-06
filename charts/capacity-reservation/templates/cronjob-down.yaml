@@ -20,9 +20,10 @@ spec:
             command:
               - /bin/sh
               - -c
+            args:
               - kubectl scale --replicas={{ .Values.schedule.down.reservation.replicas }} deployment/{{ include "capacity-reservation.fullname" . }}-reservation --namespace {{ .Release.Namespace }}
             resources:
-              {{- toYaml .Values.schedule.down.resources | nindent 14 }}
+              {{- toYaml .Values.schedule.resources | nindent 14 }}
           restartPolicy: OnFailure
           {{- with .Values.schedule.nodeSelector }}
           nodeSelector:
