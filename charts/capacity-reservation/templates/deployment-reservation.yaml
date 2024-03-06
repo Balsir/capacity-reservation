@@ -24,9 +24,6 @@ spec:
             requests:
               cpu: "1m"
               memory: "1Mi"
-            limits:
-              cpu: "1m"
-              memory: "1Mi"
       {{- with .Values.reservation.nodeSelector }}
       nodeSelector:
         {{- tpl . $ | nindent 8 }}
