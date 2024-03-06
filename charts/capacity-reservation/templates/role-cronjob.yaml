@@ -4,5 +4,5 @@ metadata:
   name: {{ include "capacity-reservation.fullname" . }}
 rules:
 - apiGroups: ["apps"]
-  resources: ["deployments"]
+  resources: ["deployments/scale"]
   verbs: ["get", "watch", "list","patch"]
