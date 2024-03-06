@@ -1,0 +1,46 @@
+{{ if .Values.reservation.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "capacity-reservation.fullname" . }}-reservation
+  labels:
+    {{- include "capacity-reservation.reservation.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.reservation.replicas }}
+  selector:
+    matchLabels:
+      {{- include "capacity-reservation.reservation.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "capacity-reservation.reservation.labels" . | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: reservation
+          image: {{ .Values.reservation.image }}
+          imagePullPolicy: {{ .Values.reservation.imagePullPolicy }}
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "1Mi"
+            limits:
+              cpu: "1m"
+              memory: "1Mi"
+      {{- with .Values.reservation.nodeSelector }}
+      nodeSelector:
+        {{- tpl . $ | nindent 8 }}
+      {{- end }}
+      {{- with .Values.reservation.affinity }}
+      affinity:
+        {{- tpl . $ | nindent 8 }}
+      {{- end }}
+      {{- with .Values.reservation.tolerations }}
+      tolerations:
+        {{- tpl . $ | nindent 8 }}
+      {{- end }}
+      {{- with .Values.reservation.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- tpl . $ | nindent 8 }}
+      {{- end }}
+{{- end }}
